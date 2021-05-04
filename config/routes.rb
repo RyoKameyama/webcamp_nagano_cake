@@ -17,11 +17,12 @@ Rails.application.routes.draw do
     registrations: 'admin/registrations'
   }
 
-  devise_for :public, controllers: {
+  devise_for :customer, controllers: {
     sessions:     'public/sessions',
     passwords:    'public/passwords',
     registrations: 'public/registrations'
   }
+  
     namespace :public do
     resources :items, only: [:index]
     resources :customers, only: [:show]
