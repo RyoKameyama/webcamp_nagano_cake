@@ -1,1 +1,10 @@
-public#show
+<h2>マイページ</h2>
+<p>登録情報<%= link_to "編集する", edit_customer_path %></p>
+
+<p>氏名<%= @customer.last_name %><%= @customer.first_name %></p>
+<p>カナ<%= @customer.last_name_kana %><%= @customer.first_name_kana %></p>
+<p>郵便番号<%= @customer.postal_code %></p>
+<p>住所<%= @customer.address %></p>
+<p>電話番号<%= @customer.telephone_number %></p>
+<p>メールアドレス<%= @customer.email %></p>
+

@@ -11,3 +11,12 @@ Admin.create(
   password: 'aaaaaa',
   password_confirmation: 'aaaaaa'
 )
+
+
+
+CartItem.create(
+
+  item_id: 1,
+  customer_id: 1,
+  amount: 2
+  )

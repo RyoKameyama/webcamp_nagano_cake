@@ -1,6 +1,6 @@
 <h1>商品編集</h1>
 
-<%= form_with model: @item, url:"/admin/items/:id", local:true do |f| %>
+<%= form_with model: @item, url:admin_item_path, local:true do |f| %>
   <h4>画像</h4>
   <%= f.attachment_field :image %>
   <h4>商品名</h4>
@@ -16,5 +16,5 @@
   <%= f.label :is_active, "販売中", {value: :販売中, style: "display: inline-block;"} %>
   <%= f.radio_button :is_active, :販売停止中 %>
   <%= f.label :is_active, "停止中", {value: :販売停止中, style: "display: inline-block;"} %>
-  <%= f.submit '新規登録' %>
+  <%= f.submit '変更を保存' %>
 <% end %>

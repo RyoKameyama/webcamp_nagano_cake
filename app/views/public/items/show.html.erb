@@ -1,0 +1,13 @@
+<h1>商品詳細</h1>
+
+<p><%= attachment_image_tag @item, :image, :fill, 300, 300, format: 'jpeg' %></p>
+<p><%= @item.name %></p>
+<p><%= @item.introduction %></p>
+<p><%= (@item.price*1.1).round %></p>
+<%= form_with model: @cart_item, url: cart_items_path, local:true do |f| %>
+<%= f.hidden_field :item_id, value: @item.id %>
+
+<%= f.select :amount, ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10',], {include_blank: '選択ボックス'},
+class: 'sample' %>
+  <%= f.submit 'カートに入れる' %>
+<% end %>

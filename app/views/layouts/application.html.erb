@@ -22,15 +22,28 @@
       <li>
         <%= link_to "ジャンル一覧", admin_genres_path %>
       </li>
-      </li>
+      <li>
         <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
       </li>
-    <% else %>
+    <% elsif customer_signed_in? %>
+      <li>
+        <%= link_to "マイぺージ", customer_path(current_customer) %>
       </li>
+        <%= link_to "商品一覧", items_path %>
+      </li>
+      <li>
+        カート一覧実装
+      </li>
+      <li>
+        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+      </li>
+
+    <% else %>
+      <li>
         <%= link_to "About", about_path %>
       </li>
       <li>
-        <%= link_to "商品一覧", public_items_path %>
+        <%= link_to "商品一覧", items_path %>
       <li>
         <%= link_to "新規登録", new_customer_registration_path %>
       </li>
@@ -38,7 +51,7 @@
         <%= link_to "ログイン", new_customer_session_path %>
       </li>
 
-      </li>
+      <li>
         <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
       </li>
 

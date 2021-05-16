@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :customers
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
    namespace :admin do
      get "/" => "homes#top"
@@ -7,9 +6,6 @@ Rails.application.routes.draw do
      resources :genres, only: [:index, :create, :edit, :update]
      resources :customers, only: [:index, :show, :edit, :update]
    end
-
-    get '/about' => 'homes#about'
-
 
   devise_for :admin, controllers: {
     sessions:     'admin/sessions',
@@ -22,10 +18,15 @@ Rails.application.routes.draw do
     passwords:    'public/passwords',
     registrations: 'public/registrations'
   }
-  
-    namespace :public do
-    resources :items, only: [:index]
-    resources :customers, only: [:show]
+
+    scope module: :public do
+
+    resources :items, only: [:index, :show]
+    resources :customers, only: [:show, :edit, :update]
+    get '/about' => 'homes#about'
+    get '/' => 'homes#top'
+    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
+    resources :cart_items, only: [:create, :index, :update, :destroy]
     end
 
 end
