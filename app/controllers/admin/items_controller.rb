@@ -13,7 +13,7 @@ def create
    if @item.save!
     redirect_to admin_item_path(@item)
    else
-    render :new
+    render 'new'
    end
 end
 
@@ -36,7 +36,6 @@ def update
 end
 
   private
-
   def item_params
     params.require(:item).permit(:genre_id, :name, :image, :introduction, :price, :is_active)
   end
