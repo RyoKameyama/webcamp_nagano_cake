@@ -1,4 +1,4 @@
-<h1>public/items#index</h1>(全✖︎件）
+<h1>商品一覧</h1>(全<%= Item.count %> 件)
 
 <% @items.each do |item| %>
 <div>
@@ -12,3 +12,5 @@
 </div>
 
 <% end %>
+
+<%= paginate @items %>

@@ -1,5 +1,7 @@
-<h1>アイテムインデックス</h1>
+<h1>商品一覧</h1>
+<%#= link_to new_admin_item_path do %>
 
+<%# end %>
 <table>
 <tbody>
   <td>商品ID</td>
@@ -10,12 +12,13 @@
 <% @items.each do |item| %>
 <tr>
   <td><%= item.id %></td>
-  <td><%= item.name %></td>
+  <td><%= link_to item.name, admin_item_path(item.id) %></td>
   <td><%= item.price %></td>
   <td><%= item.genre.name %></td>
-  <td><%= item.is_active  %></td>
+  <td><%= item.is_active %></td>
 </tr>
 <% end %>
 </tbody>
 </table>
 
+<%= paginate @items %>

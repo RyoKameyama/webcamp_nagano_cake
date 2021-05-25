@@ -5,6 +5,8 @@ Rails.application.routes.draw do
      resources :items, only: [:index, :new, :create, :show, :edit, :update]
      resources :genres, only: [:index, :create, :edit, :update]
      resources :customers, only: [:index, :show, :edit, :update]
+     resources :orders, only: [:show, :update]
+     resources :order_details, only: [:update]
    end
 
   devise_for :admin, controllers: {
@@ -22,9 +24,11 @@ Rails.application.routes.draw do
     scope module: :public do
 
     resources :items, only: [:index, :show]
+    get '/customers/withdraw' => 'customers#withdraw'
+    patch '/customers/reset' => 'customers#reset'
     resources :customers, only: [:show, :edit, :update]
     get '/about' => 'homes#about'
-    get '/' => 'homes#top'
+    get '/' => 'homes#top', as: 'root'
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, only: [:create, :index, :update, :destroy]
     get '/orders/complete' => 'orders#complete'

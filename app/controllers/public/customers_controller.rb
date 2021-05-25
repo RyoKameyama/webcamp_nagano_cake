@@ -1,5 +1,5 @@
 class Public::CustomersController < ApplicationController
-  
+
 def show
   @customer=Customer.find(params[:id])
 end
@@ -11,12 +11,21 @@ end
 def update
   @customer=Customer.find(params[:id])
   if @customer.update(customer_params)
-      flash[:notice] = "会員情報は正常に更新されました。"
     redirect_to customer_path(@customer)
   else
         render 'edit'
   end
 end
+
+ def withdraw
+ end
+
+ def reset
+   @customer=current_customer
+   @customer.update(is_deleted: "Invalid")
+   reset_session
+   redirect_to root_path
+ end
 
   private
 

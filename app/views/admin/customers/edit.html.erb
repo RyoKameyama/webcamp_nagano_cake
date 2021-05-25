@@ -1,8 +1,6 @@
-<h2>会員情報編集</h2>
+<h2><%= @customer.last_name + @customer.first_name %>さんの会員情報編集</h2>
 
 <%= form_with model:@customer, local:true do |f| %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@customer.errors.count, "つ") %>エラーがあるため、編集を保存できません。:</h2>
       <ul>
         <% @customer.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -36,6 +34,13 @@
     <p>
       <%= f.label :メールアドレス %>
     　<%= f.text_field :email, id:"email" %>
+    </p>
+    <p>
+      <%= f.label :会員ステータス %>
+    　<%= f.radio_button :is_deleted, "Available" %>
+    　<%= f.label :有効 %>
+    　<%= f.radio_button :is_deleted, "Invalid" %>
+    　<%= f.label :退会 %>
     </p>
   </div>
     <p><%= f.submit "編集を保存", id:"update_botton" %></p>

@@ -1,8 +1,6 @@
 <h2>会員情報編集</h2>
 
 <%= form_with model:@customer, local:true do |f| %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@customer.errors.count, "つ") %>エラーがあるため、編集を保存できません。:</h2>
       <ul>
         <% @customer.errors.full_messages.each do |message| %>
           <li><%= message %></li>
